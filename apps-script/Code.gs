@@ -1,19 +1,23 @@
 /**
  * 多多性別投票（朋友版）— Google Apps Script 後端
- * 投票資料存在這個 Google 試算表的「投票」分頁。
  *
- * 部署方式：擴充功能 → Apps Script → 貼上本檔 → 部署 → 新增部署作業
- *   類型：網頁應用程式
- *   執行身分：我
- *   誰可以存取：所有人
+ * 這是「獨立」的 Apps Script 專案（從 script.google.com 新增，不是從試算表的「擴充功能」開）。
+ * 它和家人版共用同一個試算表，但只讀寫「朋友投票」分頁，不會碰到家人的「投票」分頁。
+ *
+ * 試算表 ID 不寫在程式碼裡（repo 是公開的），請放在：
+ *   專案設定（齒輪）→ 指令碼屬性 → 新增 SPREADSHEET_ID = 試算表網址中 /d/ 和 /edit 之間那一串
+ *
+ * 部署：部署 → 新增部署作業 → 網頁應用程式；執行身分：我；誰可以存取：所有人
  */
 
-const SHEET_NAME = '投票';
+const SHEET_NAME = '朋友投票';
 const HEADERS = ['時間', '姓名', '猜測', '理由'];
 const GUESS_LABEL = { boy: '男生', girl: '女生' };
 
 function getSheet_() {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const id = PropertiesService.getScriptProperties().getProperty('SPREADSHEET_ID');
+  if (!id) throw new Error('尚未設定 SPREADSHEET_ID（專案設定 → 指令碼屬性）');
+  const ss = SpreadsheetApp.openById(id);
   let sh = ss.getSheetByName(SHEET_NAME);
   if (!sh) {
     sh = ss.insertSheet(SHEET_NAME);
