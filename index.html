@@ -76,7 +76,7 @@
 
     <div class="field">
       <label for="reason">為什麼這樣猜？ <span class="hint">（越有趣越好！）</span></label>
-      <textarea id="reason" name="reason" maxlength="500" placeholder="例如：媽媽最近超愛吃酸的，酸兒辣女！" required></textarea>
+      <textarea id="reason" name="reason" maxlength="500" placeholder="例如：昨晚擲筊連續三個聖筊，可是我忘記我問的是男生還是女生了…" required></textarea>
     </div>
 
     <p id="form-error" class="error" role="alert" hidden></p>
@@ -101,6 +101,17 @@
 <script>
 (function () {
   const form = document.getElementById("vote-form");
+
+  // 每次打開隨機換一個好笑、不偏向任何性別的理由範例
+  const REASON_IDEAS = [
+    "例如：昨晚擲筊連續三個聖筊，可是我忘記我問的是男生還是女生了…",
+    "例如：我把戒指綁線在肚子上晃，它一直轉圈圈，我覺得多多只是想跳舞。",
+    "例如：家裡的貓聽到「多多」就翻肚，牠一定知道答案，只是不肯說。",
+    "例如：我把硬幣丟了 100 次，剛好 50 次正面 50 次反面，所以我改用直覺。",
+    "例如：我問了 AI，它回答「這是個好問題」，然後就沒有然後了。",
+    "例如：今天出門先踏右腳，這絕對是個徵兆，雖然我不知道代表什麼。",
+  ];
+  form.reason.placeholder = REASON_IDEAS[Math.floor(Math.random() * REASON_IDEAS.length)];
   const errEl = document.getElementById("form-error");
   const btn = document.getElementById("submit");
   const thanks = document.getElementById("thanks");
