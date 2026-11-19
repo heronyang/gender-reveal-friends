@@ -1,28 +1,30 @@
-/* Layout: one narrow column; sunny duck-pond palette, confetti dots on the page, boy blue vs bubblegum pink as the two big choices */
+/* Layout: one narrow column; mint-garden palette (gender-neutral greens + lemon), confetti dots on the page, boy blue vs bubblegum pink as the two big choices */
 :root {
-  --bg: #fff4c7;
-  --dot-1: #ffd9e3;
-  --dot-2: #cfe6ff;
-  --dot-3: #ffe08a;
+  --bg: #e3f5ec;
+  --dot-1: #ffe58a;
+  --dot-2: #bfe8d3;
+  --dot-3: #fff6c9;
   --surface: #ffffff;
-  --ink: #2b2350;
-  --muted: #6a6189;
-  --line: #f0dfa6;
+  --ink: #1e3a32;
+  --muted: #557066;
+  --line: #c6e3d4;
   --boy: #2e6fd8;
   --boy-soft: #dcebff;
   --girl: #f2456f;
   --girl-soft: #ffe0e8;
-  --sun: #ff8a1f;
-  --spring: #12a594;
-  --spring-soft: #d7f5ef;
+  --sun: #0f9e78;
+  --sun-deep: #0a7457;
+  --spring: #9a6a00;
+  --spring-soft: #fff0b8;
   --danger: #c62828;
   --font-display: "Huninn", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
   --font-body: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
   --radius: 20px;
-  --shadow: 0 6px 0 rgba(43, 35, 80, .08);
-  color-scheme: light; /* one sunny look on purpose, in light and dark mode alike */
+  --shadow: 0 6px 0 rgba(30, 58, 50, .08);
+  color-scheme: light; /* one mint look on purpose, in light and dark mode alike */
 }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
@@ -118,9 +120,9 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
 button.primary {
   font: inherit; font-family: var(--font-display); font-size: 1.2rem; border: 0; cursor: pointer;
   background: var(--sun); color: #fff; border-radius: 999px; padding: 14px 20px;
-  box-shadow: 0 5px 0 #d06a0a; transition: transform .1s, box-shadow .1s;
+  box-shadow: 0 5px 0 var(--sun-deep); transition: transform .1s, box-shadow .1s;
 }
-button.primary:active { transform: translateY(3px); box-shadow: 0 2px 0 #d06a0a; }
+button.primary:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--sun-deep); }
 button.primary:disabled { opacity: .55; cursor: wait; }
 button.ghost {
   font: inherit; background: var(--surface); color: var(--ink); cursor: pointer;
